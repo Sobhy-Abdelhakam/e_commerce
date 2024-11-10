@@ -1,3 +1,5 @@
+import 'package:e_commerce/utils/constants/colors.dart';
+
 import 'custom_themes/text_field_theme.dart';
 import 'custom_themes/appbar_theme.dart';
 import 'custom_themes/elevated_button_theme.dart';
@@ -11,8 +13,16 @@ class TAppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    primaryColor: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    primaryColor: TColors.primaryLight,
+    scaffoldBackgroundColor: TColors.backgroundLight,
+    colorScheme: const ColorScheme.light(
+      primary: TColors.primaryLight,
+      secondary: TColors.secondaryLight,
+      surface: TColors.surfaceLight,
+      onPrimary: Colors.white,
+      onSecondary: Colors.black,
+      onSurface: TColors.textLight,
+    ),
     textTheme: TTextTheme.lightTextTheme,
     appBarTheme: TAppBarTheme.lightAppBarTheme,
     elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
@@ -22,12 +32,20 @@ class TAppTheme {
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    primaryColor: Colors.blue,
+    primaryColor: TColors.primaryDark,
     scaffoldBackgroundColor: Colors.black,
+    colorScheme: const ColorScheme.dark(
+      primary: TColors.primaryDark,
+      secondary: TColors.secondaryDark,
+      surface: TColors.surfaceDark,
+      onPrimary: Colors.black,
+      onSecondary: Colors.white,
+      onSurface: TColors.textDark,
+    ),
     textTheme: TTextTheme.darkTextTheme,
     appBarTheme: TAppBarTheme.darkAppBarTheme,
     elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.darkOutlinedButtonTheme,
-    inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme
+    inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme,
   );
 }

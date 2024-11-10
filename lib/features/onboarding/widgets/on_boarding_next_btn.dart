@@ -19,7 +19,6 @@ class OnBoardingNextButton extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          backgroundColor: Colors.black,
         ),
         child: const Icon(Icons.keyboard_arrow_right_outlined),
       ),

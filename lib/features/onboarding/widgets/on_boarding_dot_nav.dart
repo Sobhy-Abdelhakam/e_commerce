@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingDotNavigation extends StatelessWidget {
-  const OnBoardingDotNavigation({super.key,});
+  const OnBoardingDotNavigation({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,11 @@ class OnBoardingDotNavigation extends StatelessWidget {
         controller: controller.pageController,
         count: 3,
         onDotClicked: controller.dotNavigationClick,
-        effect: ExpandingDotsEffect(activeDotColor: isDarkMode ? TColors.light : TColors.dark),
+        effect: ExpandingDotsEffect(
+          activeDotColor:
+              isDarkMode ? TColors.secondaryDark : TColors.secondaryLight,
+          dotHeight: 8,
+        ),
       ),
     );
   }
