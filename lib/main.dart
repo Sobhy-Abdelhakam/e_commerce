@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/onboarding/on_boarding_view.dart';
 import 'package:e_commerce/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,9 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const Placeholder(),
+      home: const Scaffold(
+        body: OnBoardingView(),
+      ),
     );
   }
 }
