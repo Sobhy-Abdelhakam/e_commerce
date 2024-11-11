@@ -15,7 +15,7 @@ class OnBoardingNextButton extends StatelessWidget {
       right: TSizes.defaultSpace,
       child: ElevatedButton(
         onPressed: () {
-          controller.nextPage();
+          controller.nextPage(context);
         },
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),

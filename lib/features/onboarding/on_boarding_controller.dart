@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/auth/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingController {
@@ -6,26 +7,29 @@ class OnBoardingController {
       OnBoardingController._privateConstructor();
 
   final pageController = PageController();
-  int currentPageIndex = 0;
 
-  void updatePageIndecator(int index) => currentPageIndex = index;
   void dotNavigationClick(int index) {
-    currentPageIndex = index;
     pageController.jumpToPage(index);
   }
 
-  void nextPage() {
-    if (currentPageIndex == 2) {
+  void nextPage(BuildContext context) {
+    if (pageController.page == 2) {
       // Go To Login Screen
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
     } else {
-      currentPageIndex += 1;
       pageController.nextPage(
           duration: const Duration(milliseconds: 500), curve: Curves.ease);
     }
   }
 
-  void skipPage() {
-    currentPageIndex = 2;
-    pageController.jumpToPage(2);
+  void skipPage(BuildContext context) {
+    // Go To Login Screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
+    );
   }
 }

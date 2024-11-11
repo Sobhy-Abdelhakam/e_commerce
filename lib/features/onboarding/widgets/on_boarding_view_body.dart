@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/onboarding/on_boarding_controller.dart';
 import 'package:e_commerce/features/onboarding/widgets/on_boarding_next_btn.dart';
+import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
 import 'on_boarding_dot_nav.dart';
@@ -16,25 +17,22 @@ class OnBoardingViewBody extends StatelessWidget {
       children: [
         PageView(
           controller: controller.pageController,
-          onPageChanged: controller.updatePageIndecator,
+          // onPageChanged: controller.updatePageIndecator,
           children: const [
             OnBoardingPage(
               image: 'assets/images/onboarding1.png',
-              title: 'Choose your product',
-              subTitle:
-                  'this is the discription of on boarding screen for this page in page view',
+              title: TTexts.onBoardingTitle1,
+              subTitle: TTexts.onBoardingSubTitle1,
             ),
             OnBoardingPage(
               image: 'assets/images/onboarding2.png',
-              title: 'Deliver at your door step',
-              subTitle:
-                  'this is the discription of on boarding screen for this page in page view',
+              title: TTexts.onBoardingTitle2,
+              subTitle: TTexts.onBoardingSubTitle2,
             ),
             OnBoardingPage(
               image: 'assets/images/onboarding3.png',
-              title: 'Deliver at your door step',
-              subTitle:
-                  'this is the discription of on boarding screen for this page in page view',
+              title: TTexts.onBoardingTitle3,
+              subTitle: TTexts.onBoardingSubTitle3,
             ),
           ],
         ),
