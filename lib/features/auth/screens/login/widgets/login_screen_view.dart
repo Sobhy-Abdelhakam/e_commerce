@@ -1,8 +1,9 @@
+import 'package:e_commerce/features/auth/widgets/footer_login_signup.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
+import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
 import 'Login_screen_form.dart';
-import 'login_screen_footer.dart';
 import 'login_screen_header.dart';
 
 class LoginScreenView extends StatelessWidget {
@@ -25,7 +26,7 @@ class LoginScreenView extends StatelessWidget {
             // form for sign in
             LoginScreenForm(),
             // google and face book
-            LoginScreenFooter(),
+            FooterLoginSignup(orString: TTexts.orSignInWith),
           ],
         ),
       ),

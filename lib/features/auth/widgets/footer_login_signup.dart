@@ -1,13 +1,11 @@
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
-import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreenFooter extends StatelessWidget {
-  const LoginScreenFooter({
-    super.key,
-  });
+class FooterLoginSignup extends StatelessWidget {
+  final String orString;
+  const FooterLoginSignup({super.key, required this.orString});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class LoginScreenFooter extends StatelessWidget {
               endIndent: 10,
             )),
             Text(
-              TTexts.orSignInWith,
+              orString,
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const Flexible(
@@ -43,7 +41,7 @@ class LoginScreenFooter extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: TColors.grey, width: 2),
+                border: Border.all(color: TColors.grey, width: 0.5),
                 borderRadius: BorderRadius.circular(100),
               ),
               child: IconButton(
@@ -60,7 +58,7 @@ class LoginScreenFooter extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: TColors.grey, width: 2),
+                border: Border.all(color: TColors.grey, width: 0.5),
                 borderRadius: BorderRadius.circular(100),
               ),
               child: IconButton(

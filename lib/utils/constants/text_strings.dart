@@ -22,4 +22,15 @@ class TTexts {
   static const String signIn = "Sign In";
   static const String createAccount = "Create Account";
   static const String orSignInWith = "or sign in with";
+  // signup
+  static const String signupTitle = "Let’s create your account";
+  static const String firstName = "First Name";
+  static const String lastName = "Last Name";
+  static const String username = "Username";
+  static const String phoneNo = "Phone Number";
+  static const String iAgreeTo = "I agree to";
+  static const String privacyPolicy = "Privacy Policy";
+  static const String and = "and";
+  static const String termsOfUse = "Terms of use";
+  static const String orSignUpWith = "or sign up with";
 }
