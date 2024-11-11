@@ -1,11 +1,11 @@
 flutter_native_splash:
   color: "#FFFFFF"
   color_dark: "#272727"
-  image: assets/logo/shopping.png
+  image: assets/logos/shopping.png
 
   fullscreen: true
 
   android_12:
     color: "#FFFFFF"
     color_dark: "#272727"
-    image: assets/logo/shopping.png
+    image: assets/logos/shopping.png
