@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/auth/screens/forget_password/forget/forget_password.dart';
 import 'package:e_commerce/features/auth/screens/signup/signup_screen.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
@@ -43,7 +44,16 @@ class LoginScreenForm extends StatelessWidget {
                   ],
                 ),
                 TextButton(
-                    onPressed: () {}, child: const Text(TTexts.forgetPassword))
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ForgetPassword(),
+                      ),
+                    );
+                  },
+                  child: const Text(TTexts.forgetPassword),
+                ),
               ],
             ),
             const SizedBox(
@@ -66,7 +76,7 @@ class LoginScreenForm extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SignupScreen(),
+                      builder: (context) => const SignupScreen(),
                     ),
                   );
                 },

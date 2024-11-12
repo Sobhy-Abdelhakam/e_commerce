@@ -4,8 +4,8 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
-class SuccessVerification extends StatelessWidget {
-  const SuccessVerification({super.key});
+class ResetPassword extends StatelessWidget {
+  const ResetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class SuccessVerification extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(TSizes.defaultSpace),
         child: SuccessVerifiReset(
-          title: TTexts.yourAccountCreatedTitle,
-          subTitle: TTexts.yourAccountCreatedSubTitle,
-          image: TImages.successIllustration,
+          title: TTexts.changeYourPasswordTitle,
+          subTitle: TTexts.changeYourPasswordSubTitle,
+          image: TImages.deliveredEmailIllustration,
         ),
       ),
     );
