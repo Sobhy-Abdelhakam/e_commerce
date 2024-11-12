@@ -17,7 +17,10 @@ class OnBoardingController {
       // Go To Login Screen
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+          settings: const RouteSettings(name: 'LoginPage'),
+        ),
       );
     } else {
       pageController.nextPage(
@@ -29,7 +32,10 @@ class OnBoardingController {
     // Go To Login Screen
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+        settings: const RouteSettings(name: 'LoginPage'),
+      ),
     );
   }
 }

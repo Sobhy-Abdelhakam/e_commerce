@@ -5,4 +5,7 @@ class TImages {
   // -- Social Logos
   static const String google = "assets/logos/google-icon.png";
   static const String facebook = "assets/logos/facebook-icon.png";
+  // verification Images
+  static const String deliveredEmailIllustration = "assets/images/man-receives-a-mail.png";
+  static const String successIllustration = "assets/images/success.png";
 }

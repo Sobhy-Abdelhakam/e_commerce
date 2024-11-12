@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/auth/screens/signup/email_verification/verification_screen.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
@@ -124,7 +125,14 @@ class SignupScreenForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VerificationScreen(),
+                    ),
+                  );
+                },
                 child: const Text(TTexts.createAccount),
               ),
             ),
