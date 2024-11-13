@@ -1,15 +1,41 @@
+import 'package:e_commerce/features/shop/card/card_screen.dart';
+import 'package:e_commerce/features/shop/home/home_screen.dart';
+import 'package:e_commerce/features/shop/store/store_screen.dart';
 import 'package:flutter/material.dart';
 
-class NavigationMenu extends StatelessWidget {
+class NavigationMenu extends StatefulWidget {
   const NavigationMenu({super.key});
+
+  @override
+  State<NavigationMenu> createState() => _NavigationMenuState();
+}
+
+class _NavigationMenuState extends State<NavigationMenu> {
+  int currentIndex = 0;
+  List<Widget> screens = const [
+    HomeScreen(),
+    StoreScreen(),
+    Center(
+      child: Text('Favorite'),
+    ),
+    CardScreen(),
+    Center(
+      child: Text('Profile'),
+    ),
+  ];
+  void changeCurrentIndex(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         height: 80,
-        selectedIndex: 1,
-        onDestinationSelected: (index) {},
+        selectedIndex: currentIndex,
+        onDestinationSelected: changeCurrentIndex,
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
@@ -25,7 +51,7 @@ class NavigationMenu extends StatelessWidget {
           ),
           NavigationDestination(
             icon: Icon(Icons.shopping_cart_outlined),
-            label: 'Cart',
+            label: 'Card',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),
@@ -33,11 +59,7 @@ class NavigationMenu extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Container(
-          color: Colors.blue,
-        ),
-      ),
+      body: screens[currentIndex],
     );
   }
 }
