@@ -9,13 +9,20 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: SuccessVerifiReset(
           title: TTexts.changeYourPasswordTitle,
           subTitle: TTexts.changeYourPasswordSubTitle,
           image: TImages.deliveredEmailIllustration,
+          textOfButton: TTexts.done,
+          buttonClick: () {
+            Navigator.popUntil(
+              context,
+              (router) => router.settings.name == 'LoginPage',
+            );
+          },
         ),
       ),
     );

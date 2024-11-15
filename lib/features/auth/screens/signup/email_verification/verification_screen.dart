@@ -1,8 +1,8 @@
 import 'package:e_commerce/features/auth/screens/signup/email_verification/success_verification.dart';
+import 'package:e_commerce/features/auth/widgets/success_verifi_reset.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
-import 'package:e_commerce/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 
 class VerificationScreen extends StatelessWidget {
@@ -27,44 +27,19 @@ class VerificationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image(
-              width: TDeviceUtils.getScreenWidth(context) * 0.6,
-              image: const AssetImage(
-                TImages.deliveredEmailIllustration,
-              ),
-            ),
-            const SizedBox(
-              height: TSizes.spaceBtwSections,
-            ),
-            Text(
-              TTexts.confirmEmail,
-              style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: TSizes.spaceBtwItems,
-            ),
-            Text(
-              TTexts.confirmEmailSubTitle,
-              style: Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: TSizes.spaceBtwSections,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SuccessVerification(),
-                    ),
-                  );
-                },
-                child: const Text(TTexts.tContinue),
-              ),
+            SuccessVerifiReset(
+              title: TTexts.confirmEmail,
+              subTitle: TTexts.confirmEmailSubTitle,
+              image: TImages.deliveredEmailIllustration,
+              textOfButton: TTexts.tContinue,
+              buttonClick: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SuccessVerification(),
+                  ),
+                );
+              },
             ),
             const SizedBox(
               height: TSizes.spaceBtwItems,

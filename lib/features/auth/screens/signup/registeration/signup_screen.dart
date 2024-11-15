@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/screens/signup/widgets/signup_screen_view.dart';
+import 'package:e_commerce/features/auth/screens/signup/registeration/widgets/signup_screen_view.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatelessWidget {

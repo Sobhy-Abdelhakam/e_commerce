@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/screens/signup/widgets/signup_screen_form.dart';
+import 'package:e_commerce/features/auth/screens/signup/registeration/widgets/signup_screen_form.dart';
 import 'package:e_commerce/features/auth/widgets/footer_login_signup.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';

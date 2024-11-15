@@ -1,5 +1,6 @@
 import 'package:e_commerce/features/onboarding/on_boarding_controller.dart';
 import 'package:e_commerce/features/onboarding/widgets/on_boarding_next_btn.dart';
+import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
@@ -20,17 +21,17 @@ class OnBoardingViewBody extends StatelessWidget {
           // onPageChanged: controller.updatePageIndecator,
           children: const [
             OnBoardingPage(
-              image: 'assets/images/onboarding1.png',
+              image: TImages.onBoarding1,
               title: TTexts.onBoardingTitle1,
               subTitle: TTexts.onBoardingSubTitle1,
             ),
             OnBoardingPage(
-              image: 'assets/images/onboarding2.png',
+              image: TImages.onBoarding2,
               title: TTexts.onBoardingTitle2,
               subTitle: TTexts.onBoardingSubTitle2,
             ),
             OnBoardingPage(
-              image: 'assets/images/onboarding3.png',
+              image: TImages.onBoarding3,
               title: TTexts.onBoardingTitle3,
               subTitle: TTexts.onBoardingSubTitle3,
             ),

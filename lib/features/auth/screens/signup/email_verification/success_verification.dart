@@ -9,13 +9,27 @@ class SuccessVerification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
-        child: SuccessVerifiReset(
-          title: TTexts.yourAccountCreatedTitle,
-          subTitle: TTexts.yourAccountCreatedSubTitle,
-          image: TImages.successIllustration,
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: TSizes.appBarHeight,
+            ),
+            SuccessVerifiReset(
+              title: TTexts.yourAccountCreatedTitle,
+              subTitle: TTexts.yourAccountCreatedSubTitle,
+              image: TImages.successIllustration,
+              textOfButton: TTexts.done,
+              buttonClick: () {
+                Navigator.popUntil(
+                  context,
+                  (router) => router.settings.name == 'LoginPage',
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

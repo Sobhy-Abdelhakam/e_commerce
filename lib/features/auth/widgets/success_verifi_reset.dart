@@ -1,15 +1,17 @@
 import 'package:e_commerce/utils/constants/sizes.dart';
-import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:e_commerce/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 
 class SuccessVerifiReset extends StatelessWidget {
-  final String title, subTitle, image;
+  final String title, subTitle, image, textOfButton;
+  final Function() buttonClick;
   const SuccessVerifiReset({
     super.key,
     required this.title,
     required this.subTitle,
     required this.image,
+    required this.textOfButton,
+    required this.buttonClick(),
   });
 
   @override
@@ -17,9 +19,6 @@ class SuccessVerifiReset extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(
-          height: TSizes.appBarHeight,
-        ),
         Image(
           width: TDeviceUtils.getScreenWidth(context) * 0.6,
           image: AssetImage(image),
@@ -46,13 +45,8 @@ class SuccessVerifiReset extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.popUntil(
-                context,
-                (router) => router.settings.name == 'LoginPage',
-              );
-            },
-            child: const Text(TTexts.done),
+            onPressed: buttonClick,
+            child: Text(textOfButton),
           ),
         ),
       ],

@@ -33,7 +33,6 @@ class _NavigationMenuState extends State<NavigationMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        height: 80,
         selectedIndex: currentIndex,
         onDestinationSelected: changeCurrentIndex,
         destinations: const [
