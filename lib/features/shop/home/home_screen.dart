@@ -1,8 +1,11 @@
+import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/home_product_item.dart';
 import 'widgets/home_screen_app_bar.dart';
 import 'widgets/home_screen_header.dart';
+import 'widgets/rounded_image.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,11 +21,16 @@ class HomeScreen extends StatelessWidget {
           const SliverToBoxAdapter(
             child: HomeScreenHeader(),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(
-              vertical: TSizes.spaceBtwSections,
-              horizontal: TSizes.defaultSpace,
+          const SliverPadding(
+            padding: EdgeInsets.all(TSizes.defaultSpace),
+            sliver: SliverToBoxAdapter(
+              child: TRoundedImage(
+                imageUrl: TImages.banner3,
+              ),
             ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
             sliver: SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -31,60 +39,8 @@ class HomeScreen extends StatelessWidget {
                 crossAxisSpacing: TSizes.sm,
               ),
               delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            borderRadius: BorderRadius.circular(16),
-                            image: const DecorationImage(
-                              image: AssetImage('assets/images/success.png'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: TSizes.md,
-                                right: TSizes.md,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.favorite_outline,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSurface,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: TSizes.sm,
-                      ),
-                      Text(
-                        'Regular Fit Slogan',
-                        style: Theme.of(context).textTheme.titleLarge,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const Text('1,190 \$'),
-                    ],
-                  );
-                },
-                childCount: 8,
+                (context, index) => const HomeProductItem(),
+                childCount: 7,
               ),
             ),
           ),
