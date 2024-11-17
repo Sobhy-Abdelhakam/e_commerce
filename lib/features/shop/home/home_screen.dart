@@ -3,9 +3,9 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/home_product_item.dart';
+import 'widgets/home_promo_slider.dart';
 import 'widgets/home_screen_app_bar.dart';
 import 'widgets/home_screen_header.dart';
-import 'widgets/rounded_image.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,17 +15,17 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: HomeAppBar(),
-          ),
-          const SliverToBoxAdapter(
-            child: HomeScreenHeader(),
-          ),
+          const SliverToBoxAdapter(child: HomeAppBar()),
+          const SliverToBoxAdapter(child: HomeScreenHeader()),
           const SliverPadding(
             padding: EdgeInsets.all(TSizes.defaultSpace),
             sliver: SliverToBoxAdapter(
-              child: TRoundedImage(
-                imageUrl: TImages.banner3,
+              child: PromoSlider(
+                banners: [
+                  TImages.banner1,
+                  TImages.banner2,
+                  TImages.banner3,
+                ],
               ),
             ),
           ),
