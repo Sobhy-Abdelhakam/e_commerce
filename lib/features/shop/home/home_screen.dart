@@ -21,11 +21,7 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.all(TSizes.defaultSpace),
             sliver: SliverToBoxAdapter(
               child: PromoSlider(
-                banners: [
-                  TImages.banner1,
-                  TImages.banner2,
-                  TImages.banner3,
-                ],
+                banners: [TImages.banner1, TImages.banner2, TImages.banner3],
               ),
             ),
           ),

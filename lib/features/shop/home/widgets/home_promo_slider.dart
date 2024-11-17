@@ -1,9 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_commerce/features/shop/home/banner_controller.dart';
+import 'package:e_commerce/features/shop/home/widgets/home_banners_indicator.dart';
+import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import 'rounded_image.dart';
 
-class PromoSlider extends StatelessWidget {
+class PromoSlider extends StatefulWidget {
   const PromoSlider({
     super.key,
     required this.banners,
@@ -11,10 +14,45 @@ class PromoSlider extends StatelessWidget {
   final List<String> banners;
 
   @override
+  State<PromoSlider> createState() => _PromoSliderState();
+}
+
+class _PromoSliderState extends State<PromoSlider> {
+  @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      items: banners.map((image) => TRoundedImage(imageUrl: image)).toList(),
-      options: CarouselOptions(viewportFraction: 1),
+    final BannerController controller = BannerController.instance;
+    return Column(
+      children: [
+        CarouselSlider(
+          items: widget.banners
+              .map((image) => TRoundedImage(imageUrl: image))
+              .toList(),
+          options: CarouselOptions(
+            viewportFraction: 1,
+            onPageChanged: (index, _) => setState(() {
+              controller.updateCarouselIndicator(index);
+            }),
+          ),
+        ),
+        const SizedBox(height: TSizes.spaceBtwItems),
+        Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (int i = 0; i < 3; i++)
+                HomeBannersIndicator(
+                  width: 20,
+                  height: 5,
+                  radius: 50,
+                  margin: const EdgeInsets.only(right: 10),
+                  backgroundColor: controller.carouselCurrentIndex == i
+                      ? Theme.of(context).colorScheme.primary
+                      : Colors.grey,
+                )
+            ],
+          ),
+        )
+      ],
     );
   }
 }
