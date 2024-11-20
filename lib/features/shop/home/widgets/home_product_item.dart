@@ -1,69 +1,128 @@
-import 'package:e_commerce/utils/constants/image_strings.dart';
+import 'package:e_commerce/features/shop/home/widgets/circular_icon.dart';
+import 'package:e_commerce/features/shop/home/widgets/rounded_container.dart';
+import 'package:e_commerce/features/shop/home/widgets/rounded_image.dart';
+import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class HomeProductItem extends StatelessWidget {
   const HomeProductItem({
     super.key,
+    required this.productImage,
+    required this.productName,
+    required this.productPrice,
   });
+
+  final String productImage, productName, productPrice;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Expanded(
-          child: ProductItemImage(),
-        ),
-        const SizedBox(
-          height: TSizes.sm,
-        ),
-        Text(
-          'Regular Fit Slogan',
-          style: Theme.of(context).textTheme.titleLarge,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        const Text('1,190 \$'),
-      ],
-    );
-  }
-}
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-class ProductItemImage extends StatelessWidget {
-  const ProductItemImage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
-          image: AssetImage(TImages.tShirts),
-          fit: BoxFit.cover,
-        ),
+        boxShadow: [
+          BoxShadow(
+            color: TColors.darkGrey.withOpacity(0.2),
+            spreadRadius: 3,
+            offset: const Offset(-2, 2),
+          )
+        ],
+        borderRadius: BorderRadius.circular(TSizes.productImageRadius),
+        color: isDark ? TColors.darkerGrey : TColors.white,
       ),
-      child: Stack(
+      child: Column(
         children: [
-          Positioned(
-            top: TSizes.md,
-            right: TSizes.md,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.favorite_outline,
-                  color: Theme.of(context).colorScheme.onSurface,
+          RoundedContainer(
+            height: 200,
+            padding: const EdgeInsets.all(TSizes.sm),
+            backgroundColor: isDark ? TColors.dark : TColors.light,
+            child: Stack(
+              children: [
+                Center(
+                    child: TRoundedImage(
+                  imageUrl: productImage,
+                  applyImageRadius: true,
+                  backgroundColor: isDark ? TColors.dark : TColors.light,
+                )),
+                Positioned(
+                  top: 12.0,
+                  child: RoundedContainer(
+                    radius: TSizes.sm,
+                    backgroundColor: TColors.secondaryDark.withOpacity(0.8),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: TSizes.sm, vertical: TSizes.xs),
+                    child: Text(
+                      '78%',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium!
+                          .apply(color: TColors.black),
+                    ),
+                  ),
                 ),
+                const Positioned(
+                    top: 0.0,
+                    right: 0.0,
+                    child: CircularIcon(
+                      icon: Icons.favorite,
+                      color: Colors.red,
+                    )),
+              ],
+            ),
+          ),
+          const SizedBox(height: TSizes.spaceBtwItems / 2),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: TSizes.sm),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    productName,
+                    style: Theme.of(context).textTheme.labelLarge,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: TSizes.spaceBtwItems / 2),
+                  Text(
+                    'Nike',
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                ],
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: TSizes.sm),
+                child: Text(
+                  productPrice,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  color: TColors.black,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(TSizes.cardRadiusMd),
+                    bottomRight: Radius.circular(TSizes.productImageRadius),
+                  ),
+                ),
+                child: const SizedBox(
+                  width: TSizes.iconLg * 1.2,
+                  height: TSizes.iconLg * 1.2,
+                  child: Icon(
+                    Icons.add,
+                    color: TColors.white,
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),

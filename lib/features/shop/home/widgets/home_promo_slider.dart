@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/features/shop/home/banner_controller.dart';
-import 'package:e_commerce/features/shop/home/widgets/home_banners_indicator.dart';
+import 'package:e_commerce/features/shop/home/widgets/rounded_container.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +40,7 @@ class _PromoSliderState extends State<PromoSlider> {
             mainAxisSize: MainAxisSize.min,
             children: [
               for (int i = 0; i < 3; i++)
-                HomeBannersIndicator(
+                RoundedContainer(
                   width: 20,
                   height: 5,
                   radius: 50,

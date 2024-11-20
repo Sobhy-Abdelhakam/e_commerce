@@ -30,12 +30,16 @@ class HomeScreen extends StatelessWidget {
             sliver: SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 4 / 6,
-                mainAxisSpacing: TSizes.sm,
-                crossAxisSpacing: TSizes.sm,
+                mainAxisExtent: 290,
+                mainAxisSpacing: TSizes.gridViewSpacing,
+                crossAxisSpacing: TSizes.gridViewSpacing,
               ),
               delegate: SliverChildBuilderDelegate(
-                (context, index) => const HomeProductItem(),
+                (context, index) => const HomeProductItem(
+                  productImage: TImages.tShirts,
+                  productName: 'Regular Fit Slogan',
+                  productPrice: '1,190 \$',
+                ),
                 childCount: 7,
               ),
             ),

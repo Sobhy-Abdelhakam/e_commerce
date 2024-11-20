@@ -22,6 +22,8 @@ class TAppTheme {
       onPrimary: Colors.white,
       onSecondary: Colors.black,
       onSurface: TColors.textLight,
+      error: TColors.error,
+      onError: TColors.textDark
     ),
     textTheme: TTextTheme.lightTextTheme,
     appBarTheme: TAppBarTheme.lightAppBarTheme,
