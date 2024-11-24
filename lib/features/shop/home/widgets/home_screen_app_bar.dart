@@ -1,4 +1,5 @@
 import 'package:e_commerce/utils/constants/sizes.dart';
+import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -13,7 +14,7 @@ class HomeAppBar extends StatelessWidget {
       child: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          'Discover',
+          TTexts.discover,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         actions: [

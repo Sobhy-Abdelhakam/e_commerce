@@ -1,4 +1,5 @@
 import 'package:e_commerce/utils/constants/sizes.dart';
+import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
 class SearchFieldWithFilterButton extends StatelessWidget {
@@ -16,7 +17,7 @@ class SearchFieldWithFilterButton extends StatelessWidget {
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.search),
-              hintText: 'Search for clothes',
+              hintText: TTexts.searchForClothes,
             ),
           ),
         ),

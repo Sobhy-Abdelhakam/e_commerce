@@ -1,5 +1,6 @@
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
+import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/home_product_item.dart';
@@ -12,6 +13,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Screen width
+    final double screenWidth = MediaQuery.of(context).size.width;
+    // Desired aspect ratio of the grid items (width/height)
+    const double childAspectRatio = 18 / 30;
+    // Desired width of each grid item
+    const double itemWidth = 180;
+    // Calculate crossAxisCount dynamically
+    final int crossAxisCount = (screenWidth / itemWidth).floor();
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -25,12 +35,34 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          // Add a section header
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: TSizes.defaultSpace,
+                vertical: TSizes.sm,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    TTexts.popularProducts,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  TextButton(onPressed: () {}, child: const Text('View all')),
+                ],
+              ),
+            ),
+          ),
           SliverPadding(
             padding: const EdgeInsets.all(TSizes.defaultSpace),
             sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisExtent: 290,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                childAspectRatio: childAspectRatio,
+                // mainAxisExtent: 290,
                 mainAxisSpacing: TSizes.gridViewSpacing,
                 crossAxisSpacing: TSizes.gridViewSpacing,
               ),

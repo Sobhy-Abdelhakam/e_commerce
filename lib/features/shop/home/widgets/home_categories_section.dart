@@ -1,4 +1,5 @@
 import 'package:e_commerce/utils/constants/sizes.dart';
+import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
 import 'home_category_item.dart';
@@ -12,7 +13,7 @@ class HomeCategoriesSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Categories',
+          TTexts.categories,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         const SizedBox(
