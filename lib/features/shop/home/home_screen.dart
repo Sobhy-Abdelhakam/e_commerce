@@ -1,3 +1,5 @@
+import 'package:e_commerce/features/shop/home/widgets/home_categories_section.dart';
+import 'package:e_commerce/features/shop/home/widgets/search_field_with_filter_button.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
@@ -5,33 +7,57 @@ import 'package:flutter/material.dart';
 
 import 'widgets/home_product_item.dart';
 import 'widgets/home_promo_slider.dart';
-import 'widgets/home_screen_app_bar.dart';
-import 'widgets/home_screen_header.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Screen width
-    final double screenWidth = MediaQuery.of(context).size.width;
-    // Desired aspect ratio of the grid items (width/height)
-    const double childAspectRatio = 18 / 30;
-    // Desired width of each grid item
-    const double itemWidth = 180;
-    // Calculate crossAxisCount dynamically
-    final int crossAxisCount = (screenWidth / itemWidth).floor();
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(child: HomeAppBar()),
-          const SliverToBoxAdapter(child: HomeScreenHeader()),
-          const SliverPadding(
-            padding: EdgeInsets.all(TSizes.defaultSpace),
-            sliver: SliverToBoxAdapter(
-              child: PromoSlider(
-                banners: [TImages.banner1, TImages.banner2, TImages.banner3],
+          SliverAppBar(
+            title: Text(
+              TTexts.discover,
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.notifications_outlined,
+                ),
+                onPressed: () {},
+              )
+            ],
+            automaticallyImplyLeading: false,
+            bottom: const PreferredSize(
+              preferredSize: Size(double.infinity, 80),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: TSizes.md),
+                child: SearchFieldWithFilterButton(),
+              ),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: TSizes.defaultSpace,
+                vertical: TSizes.spaceBtwSections,
+              ),
+              child: Column(
+                children: [
+                  HomeCategoriesSection(),
+                  SizedBox(
+                    height: TSizes.spaceBtwSections,
+                  ),
+                  PromoSlider(
+                    banners: [
+                      TImages.banner1,
+                      TImages.banner2,
+                      TImages.banner3
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
@@ -40,7 +66,6 @@ class HomeScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: TSizes.defaultSpace,
-                vertical: TSizes.sm,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,12 +82,14 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            padding: const EdgeInsets.symmetric(
+              horizontal: TSizes.defaultSpace,
+              vertical: TSizes.spaceBtwItems / 2,
+            ),
             sliver: SliverGrid(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                childAspectRatio: childAspectRatio,
-                // mainAxisExtent: 290,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisExtent: 290,
                 mainAxisSpacing: TSizes.gridViewSpacing,
                 crossAxisSpacing: TSizes.gridViewSpacing,
               ),

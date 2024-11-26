@@ -17,7 +17,7 @@ class HomeCategoriesSection extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         const SizedBox(
-          height: TSizes.spaceBtwItems,
+          height: TSizes.spaceBtwItems / 2,
         ),
         SizedBox(
           height: 80,
@@ -27,7 +27,7 @@ class HomeCategoriesSection extends StatelessWidget {
             itemBuilder: (_, index) => HomeCategoryItem(
               itemImage: 'assets/icons/categories/icons8-shoes-64.png',
               itemCategory: 'Category',
-              onPressed: (){},
+              onPressed: () {},
             ),
           ),
         ),

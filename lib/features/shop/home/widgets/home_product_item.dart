@@ -1,6 +1,6 @@
-import 'package:e_commerce/features/shop/home/widgets/circular_icon.dart';
-import 'package:e_commerce/features/shop/home/widgets/rounded_container.dart';
-import 'package:e_commerce/features/shop/home/widgets/rounded_image.dart';
+import 'package:e_commerce/common/widgets/circular_icon.dart';
+import 'package:e_commerce/common/widgets/rounded_container.dart';
+import 'package:e_commerce/common/widgets/rounded_image.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';

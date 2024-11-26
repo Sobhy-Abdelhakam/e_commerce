@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/features/shop/home/banner_controller.dart';
-import 'package:e_commerce/features/shop/home/widgets/rounded_container.dart';
+import 'package:e_commerce/common/widgets/rounded_container.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-import 'rounded_image.dart';
+import '../../../../common/widgets/rounded_image.dart';
 
 class PromoSlider extends StatefulWidget {
   const PromoSlider({
