@@ -1,3 +1,4 @@
+import 'package:e_commerce/common/widgets/section_header.dart';
 import 'package:e_commerce/features/shop/home/widgets/home_categories_section.dart';
 import 'package:e_commerce/features/shop/home/widgets/search_field_with_filter_button.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
@@ -67,17 +68,9 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: TSizes.defaultSpace,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    TTexts.popularProducts,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text('View all')),
-                ],
+              child: SectionHeader(
+                title: TTexts.popularProducts,
+                viewAllClick: () {},
               ),
             ),
           ),

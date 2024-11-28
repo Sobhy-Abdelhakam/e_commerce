@@ -40,12 +40,7 @@ class HomeProductItem extends StatelessWidget {
             backgroundColor: isDark ? TColors.dark : TColors.light,
             child: Stack(
               children: [
-                Center(
-                    child: TRoundedImage(
-                  imageUrl: productImage,
-                  applyImageRadius: true,
-                  backgroundColor: isDark ? TColors.dark : TColors.light,
-                )),
+                Center(child: TRoundedImage(imageUrl: productImage)),
                 Positioned(
                   top: 12.0,
                   child: RoundedContainer(
@@ -95,6 +90,7 @@ class HomeProductItem extends StatelessWidget {
               ),
             ),
           ),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

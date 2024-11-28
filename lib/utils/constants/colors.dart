@@ -5,18 +5,20 @@ class TColors {
 
   // App Basic Colors
   // light
-  static const primaryLight = Color(0xFFFF6F61);
-  static const secondaryLight = Color(0xFF4ECDC4);
-  static const backgroundLight = Color(0xFFFFFFFF);
-  static const surfaceLight = Color(0xFFF5F5F5);
-  static const accentLight = Color(0xFFFFD700);
+  static const primaryLight = Color(0xFF6200EA);
+  static const secondaryLight = Color(0xFF03DAC6);
+  static const backgroundLight = Color(0xFFF8F9FA);
+  static const onBackgroundLight = Color(0xFF212121);
+  static const surfaceLight = Color(0xFFFFFFFF);
+  static const onSurfaceLight = Color(0xFF212121);
+  static const accentLight = Color(0xFFF44336);
   static const Color textLight = Color(0xFF333333);
   // dark
-  static const primaryDark = Color(0xFFFF8A80);
-  static const secondaryDark = Color(0xFF3AAFA9);
+  static const primaryDark = Color(0xFFBB86FC);
+  static const secondaryDark = Color(0xFF03DAC6);
   static const backgroundDark = Color(0xFF121212);
   static const surfaceDark = Color(0xFF1E1E1E);
-  static const accentDark = Color(0xFFFFEB3B);
+  static const accentDark = Color(0xFFCF6679);
   static const Color textDark = Colors.white;
 
   // Error and Validation Colors
