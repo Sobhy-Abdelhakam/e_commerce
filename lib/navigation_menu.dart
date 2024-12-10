@@ -1,6 +1,7 @@
 import 'package:e_commerce/features/shop/card/card_screen.dart';
 import 'package:e_commerce/features/shop/home/home_screen.dart';
 import 'package:e_commerce/features/shop/store/store_screen.dart';
+import 'package:e_commerce/features/shop/wishlist/favorite_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavigationMenu extends StatefulWidget {
@@ -15,9 +16,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
   List<Widget> screens = const [
     HomeScreen(),
     StoreScreen(),
-    Center(
-      child: Text('Favorite'),
-    ),
+    FavoriteScreen(),
     CardScreen(),
     Center(
       child: Text('Profile'),

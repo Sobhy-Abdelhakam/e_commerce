@@ -24,7 +24,7 @@ class CircularIcon extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
           color: backgroundColor ??
-              Theme.of(context).colorScheme.surface.withOpacity(0.9),
+              Theme.of(context).colorScheme.surface.withOpacity(0.8),
           borderRadius: BorderRadius.circular(100)),
       child: IconButton(
         onPressed: onPressed,

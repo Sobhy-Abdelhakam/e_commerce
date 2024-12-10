@@ -5,15 +5,19 @@ import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-class HomeProductItem extends StatelessWidget {
-  const HomeProductItem({
+class ProductCardVertical extends StatelessWidget {
+  const ProductCardVertical({
     super.key,
     required this.productImage,
     required this.productName,
     required this.productPrice,
+    required this.brand,
+    required this.discount,
+    required this.isFavorite,
   });
 
-  final String productImage, productName, productPrice;
+  final String productImage, productName, productPrice, brand, discount;
+  final bool isFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +28,10 @@ class HomeProductItem extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: TColors.darkGrey.withOpacity(0.2),
-            spreadRadius: 3,
-            offset: const Offset(-2, 2),
+            color: TColors.darkGrey.withOpacity(0.5),
+            blurRadius: 5,
+            spreadRadius: 2,
+            offset: const Offset(0, 2),
           )
         ],
         borderRadius: BorderRadius.circular(TSizes.productImageRadius),
@@ -49,21 +54,23 @@ class HomeProductItem extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: TSizes.sm, vertical: TSizes.xs),
                     child: Text(
-                      '78%',
+                      discount,
                       style: Theme.of(context)
                           .textTheme
                           .labelMedium!
-                          .apply(color: TColors.black),
+                          .apply(color: Colors.black),
                     ),
                   ),
                 ),
-                const Positioned(
+                Positioned(
                     top: 0.0,
                     right: 0.0,
-                    child: CircularIcon(
-                      icon: Icons.favorite,
-                      color: Colors.red,
-                    )),
+                    child: isFavorite
+                        ? const CircularIcon(
+                            icon: Icons.favorite,
+                            color: Colors.red,
+                          )
+                        : const CircularIcon(icon: Icons.favorite_border)),
               ],
             ),
           ),
@@ -83,7 +90,7 @@ class HomeProductItem extends StatelessWidget {
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems / 2),
                   Text(
-                    'Nike',
+                    brand,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ],

@@ -1,3 +1,5 @@
+import 'package:e_commerce/common/widgets/grid_layout.dart';
+import 'package:e_commerce/common/widgets/main_app_bar.dart';
 import 'package:e_commerce/common/widgets/section_header.dart';
 import 'package:e_commerce/features/shop/home/widgets/home_categories_section.dart';
 import 'package:e_commerce/features/shop/home/widgets/search_field_with_filter_button.dart';
@@ -6,7 +8,7 @@ import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/home_product_item.dart';
+import '../../../common/widgets/product_card_vertical.dart';
 import 'widgets/home_promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,88 +17,48 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            title: Text(
-              TTexts.discover,
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(
-                  Icons.notifications_outlined,
-                ),
-                onPressed: () {},
-              )
-            ],
-            automaticallyImplyLeading: false,
-            bottom: const PreferredSize(
-              preferredSize: Size(double.infinity, 80),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: TSizes.md),
-                child: SearchFieldWithFilterButton(),
+      appBar: MainAppBar(
+        title: TTexts.discover,
+        icon: Icons.notifications_outlined,
+        iconClick: () {},
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          child: Column(
+            children: [
+              const SearchFieldWithFilterButton(),
+              const SizedBox(
+                height: TSizes.spaceBtwSections,
               ),
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: TSizes.defaultSpace,
-                vertical: TSizes.spaceBtwSections,
+              const HomeCategoriesSection(),
+              const SizedBox(
+                height: TSizes.spaceBtwSections,
               ),
-              child: Column(
-                children: [
-                  HomeCategoriesSection(),
-                  SizedBox(
-                    height: TSizes.spaceBtwSections,
-                  ),
-                  PromoSlider(
-                    banners: [
-                      TImages.banner1,
-                      TImages.banner2,
-                      TImages.banner3
-                    ],
-                  ),
-                ],
+              const PromoSlider(
+                banners: [TImages.banner1, TImages.banner2, TImages.banner3],
               ),
-            ),
-          ),
-          // Add a section header
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: TSizes.defaultSpace,
+              const SizedBox(
+                height: TSizes.spaceBtwSections,
               ),
-              child: SectionHeader(
+              SectionHeader(
                 title: TTexts.popularProducts,
                 viewAllClick: () {},
               ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: TSizes.defaultSpace,
-              vertical: TSizes.spaceBtwItems / 2,
-            ),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisExtent: 290,
-                mainAxisSpacing: TSizes.gridViewSpacing,
-                crossAxisSpacing: TSizes.gridViewSpacing,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => const HomeProductItem(
+              GridLayout(
+                itemCount: 8,
+                itemBuilder: (_, index) => const ProductCardVertical(
                   productImage: TImages.tShirts,
                   productName: 'Regular Fit Slogan',
                   productPrice: '1,190 \$',
+                  discount: '78%',
+                  isFavorite: false,
+                  brand: 'Nike',
                 ),
-                childCount: 7,
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
