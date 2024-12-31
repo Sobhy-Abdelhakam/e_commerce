@@ -13,10 +13,12 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_dotenv: ^5.2.1
   flutter_launcher_icons: ^0.14.1
   flutter_native_splash: ^2.4.2
   readmore: ^3.0.0
   smooth_page_indicator: ^1.2.0+3
+  supabase_flutter: ^2.8.2
 
 dev_dependencies:
   flutter_lints: ^4.0.0
@@ -34,6 +36,7 @@ flutter:
     - assets/icons/
     - assets/icons/categories/
     - assets/logos/
+    - .env
   # fonts:
   #   - family: Schyler
   #     fonts:
