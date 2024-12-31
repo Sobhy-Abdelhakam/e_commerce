@@ -1,3 +1,4 @@
+import 'package:e_commerce/data/repository/category_repo_impl.dart';
 import 'package:e_commerce/features/onboarding/on_boarding_view.dart';
 import 'package:e_commerce/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ void main() async {
     url: url,
     anonKey: anonKey,
   );
+  final repo = CategoryRepoImpl(Supabase.instance);
+  repo.getCategories().then((onValue){print(onValue);});
   runApp(const MyApp());
 }
 
