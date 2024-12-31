@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/personalization/screens/settings/setting_screen.dart';
 import 'package:e_commerce/features/shop/card/card_screen.dart';
 import 'package:e_commerce/features/shop/home/home_screen.dart';
 import 'package:e_commerce/features/shop/store/store_screen.dart';
@@ -18,9 +19,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
     StoreScreen(),
     FavoriteScreen(),
     CardScreen(),
-    Center(
-      child: Text('Profile'),
-    ),
+    SettingScreen(),
   ];
   void changeCurrentIndex(int index) {
     setState(() {

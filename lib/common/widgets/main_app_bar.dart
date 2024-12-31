@@ -5,14 +5,14 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({
     super.key,
     required this.title,
-    required this.icon,
-    required this.iconClick,
+    this.icon,
+    this.iconClick,
     this.haveBackArrow = false,
     this.badgeCount,
   });
   final String title;
-  final IconData icon;
-  final VoidCallback iconClick;
+  final IconData? icon;
+  final VoidCallback? iconClick;
   final bool haveBackArrow;
   final int? badgeCount;
 
@@ -31,10 +31,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: Theme.of(context).textTheme.headlineLarge,
       ),
       actions: [
-        IconButton(
-          icon: iconWidget,
-          onPressed: iconClick,
-        )
+        if (icon != null)
+          IconButton(
+            icon: iconWidget,
+            onPressed: iconClick,
+          ),
       ],
       automaticallyImplyLeading: haveBackArrow,
     );

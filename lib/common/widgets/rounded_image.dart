@@ -13,7 +13,8 @@ class TRoundedImage extends StatelessWidget {
     this.backgroundColor,
     this.fit = BoxFit.contain,
     this.padding,
-    this.borderRadius = TSizes.md, this.overlayColor,
+    this.borderRadius = TSizes.md,
+    this.overlayColor,
   });
 
   final double? width, height;

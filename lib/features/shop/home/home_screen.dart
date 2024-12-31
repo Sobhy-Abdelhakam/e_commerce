@@ -3,6 +3,7 @@ import 'package:e_commerce/common/widgets/main_app_bar.dart';
 import 'package:e_commerce/common/widgets/section_header.dart';
 import 'package:e_commerce/features/shop/home/widgets/home_categories_section.dart';
 import 'package:e_commerce/features/shop/home/widgets/search_field_with_filter_button.dart';
+import 'package:e_commerce/features/shop/product_details/product_details_screen.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
@@ -47,13 +48,23 @@ class HomeScreen extends StatelessWidget {
               ),
               GridLayout(
                 itemCount: 8,
-                itemBuilder: (_, index) => const ProductCardVertical(
+                itemBuilder: (_, index) => ProductCardVertical(
                   productImage: TImages.tShirts,
                   productName: 'Regular Fit Slogan',
                   productPrice: '1,190 \$',
                   discount: '78%',
                   isFavorite: false,
                   brand: 'Nike',
+                  itemClick: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const ProductDetailsScreen();
+                        },
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

@@ -19,13 +19,14 @@ class StoreRecommendedProductSection extends StatelessWidget {
         ),
         GridLayout(
           itemCount: 4,
-          itemBuilder: (_, index) => const ProductCardVertical(
+          itemBuilder: (_, index) => ProductCardVertical(
             productImage: TImages.tShirts,
             productName: 'Regular Fit Slogan',
             productPrice: '1,190 \$',
             discount: '78 %',
             isFavorite: true,
             brand: 'Nike',
+            itemClick: (){},
           ),
         ),
       ],

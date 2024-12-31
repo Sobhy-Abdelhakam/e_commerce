@@ -12,6 +12,8 @@ class TImages {
   // verification Images
   static const String deliveredEmailIllustration = "assets/images/man-receives-a-mail.png";
   static const String successIllustration = "assets/images/success.png";
+
+  static const String profile = "assets/images/user.png";
   // -- Category Icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
   static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";

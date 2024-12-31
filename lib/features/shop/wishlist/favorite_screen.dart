@@ -18,13 +18,14 @@ class FavoriteScreen extends StatelessWidget {
           child: GridLayout(
               itemCount: 6,
               itemBuilder: (_, index) {
-                return const ProductCardVertical(
+                return ProductCardVertical(
                   productImage: TImages.tShirts,
                   productName: 'Regular Fit Slogan',
                   productPrice: '1,190 \$',
                   discount: '78%',
                   isFavorite: true,
                   brand: 'Nike',
+                  itemClick: () {},
                 );
               }),
         ),
