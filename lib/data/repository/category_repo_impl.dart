@@ -9,8 +9,7 @@ class CategoryRepoImpl implements CategoryRepository {
   @override
   Future<List<CategoryProduct>> getCategories() async {
     final response = await _supabase.client.from('Categories').select();
-    final test = response.map((category) => CategoryProduct.fromMap(category)).toList();
-    return test;
+    return response.map(CategoryProduct.fromMap).toList();
   }
   
 }

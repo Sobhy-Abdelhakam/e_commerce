@@ -6,12 +6,12 @@ class CategoryProduct {
   final String name;
   final String? description;
   final String? imageUrl;
-  final String createdAt;
+  final DateTime createdAt;
   CategoryProduct({
     required this.id,
     required this.name,
-    required this.description,
-    required this.imageUrl,
+    this.description,
+    this.imageUrl,
     required this.createdAt,
   });
 
@@ -20,7 +20,7 @@ class CategoryProduct {
     String? name,
     String? description,
     String? imageUrl,
-    String? createdAt,
+    DateTime? createdAt,
   }) {
     return CategoryProduct(
       id: id ?? this.id,
@@ -47,7 +47,7 @@ class CategoryProduct {
       name: map['name'] as String,
       description: map['description'] as String?,
       imageUrl: map['image_url'] as String?,
-      createdAt: map['created_at'] as String,
+      createdAt: map['created_at'] as DateTime,
     );
   }
 
