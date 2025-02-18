@@ -28,7 +28,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         title,
-        style: Theme.of(context).textTheme.headlineLarge,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
       actions: [
         if (icon != null)

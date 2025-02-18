@@ -1,6 +1,3 @@
-import 'package:e_commerce/data/repository/category_repo_impl.dart';
-import 'package:e_commerce/features/auth/presentation/screens/login/login_screen.dart';
-import 'package:e_commerce/features/onboarding/on_boarding_view.dart';
 import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/theme/theme.dart';
 import 'package:flutter/material.dart';

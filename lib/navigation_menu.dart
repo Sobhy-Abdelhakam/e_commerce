@@ -1,7 +1,6 @@
 import 'package:e_commerce/features/personalization/screens/settings/setting_screen.dart';
 import 'package:e_commerce/features/shop/card/card_screen.dart';
 import 'package:e_commerce/features/shop/home/home_screen.dart';
-import 'package:e_commerce/features/shop/store/store_screen.dart';
 import 'package:e_commerce/features/shop/wishlist/favorite_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,6 @@ class _NavigationMenuState extends State<NavigationMenu> {
   int currentIndex = 0;
   List<Widget> screens = const [
     HomeScreen(),
-    StoreScreen(),
     FavoriteScreen(),
     CardScreen(),
     SettingScreen(),
@@ -37,10 +35,6 @@ class _NavigationMenuState extends State<NavigationMenu> {
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
             label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.store_outlined),
-            label: 'Store',
           ),
           NavigationDestination(
             icon: Icon(Icons.favorite_outline_rounded),
