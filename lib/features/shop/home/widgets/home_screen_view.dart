@@ -74,7 +74,7 @@ class HomeScreenView extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return const ProductDetailsScreen();
+                                  return ProductDetailsScreen(product: product,);
                                 },
                               ),
                             );

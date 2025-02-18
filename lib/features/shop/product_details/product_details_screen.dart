@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/common/widgets/rounded_container.dart';
 import 'package:e_commerce/common/widgets/rounded_image.dart';
 import 'package:e_commerce/common/widgets/section_header.dart';
+import 'package:e_commerce/domain/models/product.dart';
 import 'package:e_commerce/utils/constants/colors.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
@@ -8,12 +10,26 @@ import 'package:e_commerce/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+class ProductDetailsScreen extends StatefulWidget {
+  final Product product;
+  const ProductDetailsScreen({super.key, required this.product});
+
+  @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  late String displayedImage;
+  @override
+  void initState() {
+    super.initState();
+    displayedImage = widget.product.images.first;
+  }
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -24,15 +40,14 @@ class ProductDetailsScreen extends StatelessWidget {
             ],
             flexibleSpace: FlexibleSpaceBar(
               expandedTitleScale: 1.5,
-              title: const Text('T_Shirt'),
+              title: Text(widget.product.name),
               background: Stack(
                 children: [
-                  const Center(
-                    child: Image(
-                      image: AssetImage(TImages.tShirts),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                  Center(
+                      child: CachedNetworkImage(
+                    imageUrl: displayedImage,
+                    fit: BoxFit.contain,
+                  )),
                   Positioned(
                     right: 0,
                     bottom: 30,
@@ -40,7 +55,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     child: SizedBox(
                       height: 80,
                       child: ListView.separated(
-                        itemCount: 6,
+                        itemCount: widget.product.images.length,
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         physics: const AlwaysScrollableScrollPhysics(),
@@ -52,7 +67,12 @@ class ProductDetailsScreen extends StatelessWidget {
                               isDark ? TColors.dark : TColors.white,
                           border: Border.all(color: TColors.primaryLight),
                           padding: const EdgeInsets.all(TSizes.sm),
-                          imageUrl: TImages.tShirts,
+                          imageUrl: widget.product.images[index],
+                          onPressed: () {
+                            setState(() {
+                              displayedImage = widget.product.images[index];
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -127,7 +147,7 @@ class ProductDetailsScreen extends StatelessWidget {
                               ),
                               const SizedBox(width: TSizes.spaceBtwItems),
                               Text(
-                                '175\$',
+                                '${widget.product.price}\$',
                                 style:
                                     Theme.of(context).textTheme.headlineMedium,
                               ),
@@ -204,18 +224,20 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: TSizes.spaceBtwSections),
-                      const SectionHeader(title: 'Discription'),
-                      const SizedBox(height: TSizes.spaceBtwItems / 2),
-                      const ReadMoreText(
-                        'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
-                        trimMode: TrimMode.Line,
-                        trimLines: 2,
-                        colorClickableText: Colors.pink,
-                        trimCollapsedText: 'Show more',
-                        trimExpandedText: 'Show less',
-                        moreStyle: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                      ),
+                      if (widget.product.description != null) ...[
+                        const SectionHeader(title: 'Discription'),
+                        const SizedBox(height: TSizes.spaceBtwItems / 2),
+                        ReadMoreText(
+                          widget.product.description!,
+                          trimMode: TrimMode.Line,
+                          trimLines: 2,
+                          colorClickableText: Colors.pink,
+                          trimCollapsedText: 'Show more',
+                          trimExpandedText: 'Show less',
+                          moreStyle: const TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                      ],
                       const Divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
