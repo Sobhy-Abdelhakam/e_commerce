@@ -1,5 +1,7 @@
 import 'package:e_commerce/data/repository/category_repo_impl.dart';
+import 'package:e_commerce/features/auth/presentation/screens/login/login_screen.dart';
 import 'package:e_commerce/features/onboarding/on_boarding_view.dart';
+import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -15,8 +17,6 @@ void main() async {
     url: url,
     anonKey: anonKey,
   );
-  final repo = CategoryRepoImpl(Supabase.instance);
-  repo.getCategories().then((onValue){print(onValue);});
   runApp(const MyApp());
 }
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       home: const Scaffold(
-        body: OnBoardingView(),
+        body: NavigationMenu(),
       ),
     );
   }

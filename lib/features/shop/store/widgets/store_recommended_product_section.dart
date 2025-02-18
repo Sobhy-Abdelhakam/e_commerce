@@ -23,7 +23,7 @@ class StoreRecommendedProductSection extends StatelessWidget {
             productImage: TImages.tShirts,
             productName: 'Regular Fit Slogan',
             productPrice: '1,190 \$',
-            discount: '78 %',
+            discount: 78,
             isFavorite: true,
             brand: 'Nike',
             itemClick: (){},

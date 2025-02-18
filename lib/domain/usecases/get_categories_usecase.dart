@@ -6,6 +6,7 @@ class GetCategoriesUsecase {
   GetCategoriesUsecase(this._repository);
 
   Future<List<CategoryProduct>> call() async{
+    _repository.getCategories().then((onValue)=> print(onValue));
     return await _repository.getCategories();
   }
 }

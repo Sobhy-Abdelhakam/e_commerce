@@ -11,13 +11,15 @@ class ProductCardVertical extends StatelessWidget {
     required this.productImage,
     required this.productName,
     required this.productPrice,
-    required this.brand,
-    required this.discount,
+    this.brand,
+    this.discount,
     required this.isFavorite,
-     required this.itemClick,
+    required this.itemClick,
   });
 
-  final String productImage, productName, productPrice, brand, discount;
+  final String productImage, productName, productPrice;
+  final String? brand;
+  final int? discount;
   final bool isFavorite;
   final VoidCallback itemClick;
 
@@ -43,42 +45,66 @@ class ProductCardVertical extends StatelessWidget {
         ),
         child: Column(
           children: [
-            RoundedContainer(
-              height: 200,
-              padding: const EdgeInsets.all(TSizes.sm),
-              backgroundColor: isDark ? TColors.dark : TColors.light,
-              child: Stack(
-                children: [
-                  Center(child: TRoundedImage(imageUrl: productImage)),
-                  Positioned(
-                    top: 12.0,
-                    child: RoundedContainer(
-                      radius: TSizes.sm,
-                      backgroundColor: TColors.secondaryDark.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
-                      child: Text(
-                        discount,
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .apply(color: Colors.black),
+            Expanded(
+              child: RoundedContainer(
+                // height: 200,
+                padding: const EdgeInsets.all(TSizes.sm),
+                backgroundColor: isDark ? TColors.dark : TColors.light,
+                child: Stack(
+                  children: [
+                    Center(child: TRoundedImage(imageUrl: productImage)),
+                    Visibility(
+                      visible: discount != null,
+                      child: Positioned(
+                        top: TSizes.sm,
+                        child: RoundedContainer(
+                          radius: TSizes.sm,
+                          backgroundColor:
+                              TColors.secondaryDark.withOpacity(0.8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: TSizes.sm, vertical: TSizes.xs),
+                          child: Text(
+                            '$discount%',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(color: Colors.black),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                      top: 0.0,
-                      right: 0.0,
-                      child: isFavorite
-                          ? const CircularIcon(
-                              icon: Icons.favorite,
-                              color: Colors.red,
-                            )
-                          : const CircularIcon(icon: Icons.favorite_border)),
-                ],
+                    // if(discount != null){
+                    //   Positioned(
+                    //   top: TSizes.sm,
+                    //   child: RoundedContainer(
+                    //     radius: TSizes.sm,
+                    //     backgroundColor: TColors.secondaryDark.withOpacity(0.8),
+                    //     padding: const EdgeInsets.symmetric(
+                    //         horizontal: TSizes.sm, vertical: TSizes.xs),
+                    //     child: Text(
+                    //       '$discount%',
+                    //       style: Theme.of(context)
+                    //           .textTheme
+                    //           .labelMedium!
+                    //           .apply(color: Colors.black),
+                    //     ),
+                    //   ),
+                    // ),
+                    // },
+
+                    Positioned(
+                        top: 0.0,
+                        right: 0.0,
+                        child: isFavorite
+                            ? const CircularIcon(
+                                icon: Icons.favorite,
+                                color: Colors.red,
+                              )
+                            : const CircularIcon(icon: Icons.favorite_border)),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: TSizes.sm),
               child: SizedBox(
@@ -93,15 +119,17 @@ class ProductCardVertical extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    Text(
-                      brand,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
+                    Visibility(
+                      visible: brand != null,
+                      child: Text(
+                        brand!,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
-            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -109,7 +137,7 @@ class ProductCardVertical extends StatelessWidget {
                   padding: const EdgeInsets.only(left: TSizes.sm),
                   child: Text(
                     productPrice,
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
                 Container(

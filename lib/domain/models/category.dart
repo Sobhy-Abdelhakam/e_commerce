@@ -4,13 +4,11 @@ import 'dart:convert';
 class CategoryProduct {
   final String id;
   final String name;
-  final String? description;
   final String? imageUrl;
-  final DateTime createdAt;
+  final String createdAt;
   CategoryProduct({
     required this.id,
     required this.name,
-    this.description,
     this.imageUrl,
     required this.createdAt,
   });
@@ -18,14 +16,12 @@ class CategoryProduct {
   CategoryProduct copyWith({
     String? id,
     String? name,
-    String? description,
     String? imageUrl,
-    DateTime? createdAt,
+    String? createdAt,
   }) {
     return CategoryProduct(
       id: id ?? this.id,
       name: name ?? this.name,
-      description: description ?? this.description,
       imageUrl: imageUrl ?? this.imageUrl,
       createdAt: createdAt ?? this.createdAt,
     );
@@ -35,8 +31,7 @@ class CategoryProduct {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'description': description,
-      'image_url': imageUrl,
+      'icon': imageUrl,
       'created_at': createdAt,
     };
   }
@@ -45,9 +40,8 @@ class CategoryProduct {
     return CategoryProduct(
       id: map['id'] as String,
       name: map['name'] as String,
-      description: map['description'] as String?,
-      imageUrl: map['image_url'] as String?,
-      createdAt: map['created_at'] as DateTime,
+      imageUrl: map['icon'] as String?,
+      createdAt: map['created_at'] as String,
     );
   }
 
@@ -57,6 +51,6 @@ class CategoryProduct {
 
   @override
   String toString() {
-    return 'Category(id: $id, name: $name, description: $description, image_url: $imageUrl, created_at: $createdAt)';
+    return 'Category(id: $id, name: $name, image_url: $imageUrl, created_at: $createdAt)';
   }
 }

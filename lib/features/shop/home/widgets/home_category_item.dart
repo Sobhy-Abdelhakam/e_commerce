@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -31,12 +32,16 @@ class HomeCategoryItem extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Center(
-                child: Image(
-                  image: AssetImage(
-                    itemImage,
-                  ),
+                child: CachedNetworkImage(
+                  imageUrl: itemImage,
                   fit: BoxFit.cover,
-                  color: Theme.of(context).colorScheme.onSurface,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      Center(
+                          child: CircularProgressIndicator(
+                              value: downloadProgress.progress)),
+                  errorWidget: (context, url, error) =>
+                      const Center(child: Icon(Icons.error)),
+                  // color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),

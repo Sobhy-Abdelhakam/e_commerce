@@ -1,5 +1,5 @@
-import 'package:e_commerce/features/auth/screens/forget_password/forget/widgets/forget_screen_form.dart';
-import 'package:e_commerce/features/auth/screens/forget_password/forget/widgets/forget_screen_header.dart';
+import 'package:e_commerce/features/auth/presentation/screens/forget_password/forget/widgets/forget_screen_form.dart';
+import 'package:e_commerce/features/auth/presentation/screens/forget_password/forget/widgets/forget_screen_header.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 

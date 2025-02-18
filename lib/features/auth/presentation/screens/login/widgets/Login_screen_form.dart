@@ -1,5 +1,5 @@
-import 'package:e_commerce/features/auth/screens/forget_password/forget/forget_password.dart';
-import 'package:e_commerce/features/auth/screens/signup/registeration/signup_screen.dart';
+import 'package:e_commerce/features/auth/presentation/screens/forget_password/forget/forget_password.dart';
+import 'package:e_commerce/features/auth/presentation/screens/signup/registeration/signup_screen.dart';
 import 'package:e_commerce/navigation_menu.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';

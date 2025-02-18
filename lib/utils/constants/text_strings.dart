@@ -26,7 +26,7 @@ class TTexts {
   static const String signupTitle = "Let’s create your account";
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
-  static const String username = "Username";
+  static const String name = "Name";
   static const String phoneNo = "Phone Number";
   static const String iAgreeTo = "I agree to";
   static const String privacyPolicy = "Privacy Policy";

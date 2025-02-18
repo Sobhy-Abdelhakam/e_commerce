@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/screens/forget_password/reset/reset_password.dart';
+import 'package:e_commerce/features/auth/presentation/screens/forget_password/reset/reset_password.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';

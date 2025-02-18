@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/screens/login/login_screen.dart';
+import 'package:e_commerce/features/auth/presentation/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingController {

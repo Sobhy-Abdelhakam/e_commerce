@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -42,16 +43,30 @@ class TRoundedImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(
-          borderRadius: applyImageRadius
-              ? BorderRadius.circular(borderRadius)
-              : BorderRadius.zero,
-          child: Image(
-            image: AssetImage(imageUrl),
-            
-            color: overlayColor,
-            fit: fit,
-          ),
-        ),
+            borderRadius: applyImageRadius
+                ? BorderRadius.circular(borderRadius)
+                : BorderRadius.zero,
+            child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                color: overlayColor,
+                fit: fit,
+                progressIndicatorBuilder: (c, url, downloadProgress) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                        value: downloadProgress.progress),
+                  );
+                },
+                errorWidget: (c, url, error) {
+                  return const Center(child: Icon(Icons.error));
+                })
+
+            // Image(
+            //   image: AssetImage(imageUrl),
+
+            //   color: overlayColor,
+            //   fit: fit,
+            // ),
+            ),
       ),
     );
   }

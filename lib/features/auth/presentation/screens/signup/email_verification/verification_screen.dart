@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/screens/signup/email_verification/success_verification.dart';
+import 'package:e_commerce/features/auth/presentation/screens/signup/email_verification/success_verification.dart';
 import 'package:e_commerce/features/auth/widgets/success_verifi_reset.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';

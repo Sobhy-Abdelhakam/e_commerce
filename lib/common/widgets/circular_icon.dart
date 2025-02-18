@@ -25,13 +25,16 @@ class CircularIcon extends StatelessWidget {
       decoration: BoxDecoration(
           color: backgroundColor ??
               Theme.of(context).colorScheme.surface.withOpacity(0.8),
-          borderRadius: BorderRadius.circular(100)),
-      child: IconButton(
-        onPressed: onPressed,
-        icon: Icon(
-          icon,
-          color: color,
-          size: size,
+          borderRadius: BorderRadius.circular(5)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GestureDetector(
+          onTap: onPressed,
+          child: Icon(
+            icon,
+            color: color,
+            size: size,
+          ),
         ),
       ),
     );
