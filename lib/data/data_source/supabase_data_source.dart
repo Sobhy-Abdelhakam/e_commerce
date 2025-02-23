@@ -5,7 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class SupabaseDataSource {
   final SupabaseClient _supabase = Supabase.instance.client;
   final String categoryTable = 'Category';
-  final String productTable = 'Products';
+  final String productTable = 'products';
 
   Future<List<CategoryProduct>> getCategories() async {
     final response = await _supabase.from(categoryTable).select();

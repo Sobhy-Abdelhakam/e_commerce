@@ -66,15 +66,18 @@ class HomeScreenView extends StatelessWidget {
                           productImage: product.images.first,
                           productName: product.name,
                           productPrice: '${product.price} \$',
-                          discount: product.discount,
+                          discount: product.discountPrice,
+                          discountPercentage: product.discountPercentage,
                           isFavorite: false,
-                          brand: 'Nike',
+                          brand: product.brand,
                           itemClick: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return ProductDetailsScreen(product: product,);
+                                  return ProductDetailsScreen(
+                                    product: product,
+                                  );
                                 },
                               ),
                             );

@@ -18,7 +18,6 @@ class OnBoardingViewBody extends StatelessWidget {
       children: [
         PageView(
           controller: controller.pageController,
-          // onPageChanged: controller.updatePageIndecator,
           children: const [
             OnBoardingPage(
               image: TImages.onBoarding1,
