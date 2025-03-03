@@ -1,26 +1,29 @@
+import 'package:e_commerce/core/call_result/response.dart';
+import 'package:e_commerce/features/auth/domain/entities/user.dart';
+
 abstract class AuthRepository {
-  Future<void> signUp({
-    required String name,
-    required String email,
-    required String password,
-    required String phoneNumber,
-  });
+  Future<Response<UserInfo>> signUp(
+    String name,
+    String email,
+    String password,
+    String phoneNumber,
+  );
 
-  Future<void> signIn({
-    required String email,
-    required String password,
-  });
+  Future<Response<UserInfo>> signIn(
+    String email,
+    String password,
+  );
 
-  Future<void> signOut();
+  Future<Response<void>> signOut();
 
-  Future<void> resetPassword({
-    required String email,
-  });
+  Future<Response<void>> resetPassword(
+    String email,
+  );
 
-  Future<void> updateProfile({
-    required String username,
-    required String email,
-  });
+  // Future<void> updateProfile({
+  //   required String username,
+  //   required String email,
+  // });
 
   Future<bool> isUserSignedIn();
 }

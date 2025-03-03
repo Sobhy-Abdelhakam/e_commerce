@@ -11,9 +11,9 @@ class LoginScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(
+        padding: const EdgeInsets.fromLTRB(
           TSizes.defaultSpace,
           TSizes.appBarHeight,
           TSizes.defaultSpace,
@@ -22,11 +22,11 @@ class LoginScreenView extends StatelessWidget {
         child: Column(
           children: [
             // title, and sub-title
-            LoginScreenHeader(),
+            const LoginScreenHeader(),
             // form for sign in
             LoginScreenForm(),
             // google and face book
-            FooterLoginSignup(orString: TTexts.orSignInWith),
+            const FooterLoginSignup(orString: TTexts.orSignInWith),
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:e_commerce/navigation_menu.dart';
+import 'package:e_commerce/features/auth/presentation/screens/login/login_screen.dart';
 import 'package:e_commerce/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       home: const Scaffold(
-        body: NavigationMenu(),
+        body: LoginScreen(),
       ),
     );
   }

@@ -1,3 +1,6 @@
+import 'package:e_commerce/core/call_result/response.dart';
+import 'package:e_commerce/core/error/failures.dart';
+import 'package:e_commerce/features/auth/domain/entities/user.dart';
 import 'package:e_commerce/features/auth/domain/repository/auth_repository.dart';
 
 class RegisterUseCase {
@@ -5,17 +8,10 @@ class RegisterUseCase {
 
   RegisterUseCase(this.repository);
 
-  Future<void> call({
-    required String name,
-    required String email,
-    required String password,
-    required String phoneNumber,
-  }) async {
-    return await repository.signUp(
-      name: name,
-      email: email,
-      password: password,
-      phoneNumber: phoneNumber,
-    );
+  Future<Response<UserInfo>> call(String name, String email, String password, String phoneNumber) {
+    if (name.isEmpty || email.isEmpty || password.isEmpty) {
+      return Future.value(Response(InvalidInputFailures("Fields cannot be empty")));
+    }
+    return repository.signUp(name, email, password, phoneNumber);
   }
 }
