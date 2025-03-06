@@ -20,9 +20,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         prefixIcon: const Icon(Icons.lock_outline),
         label: Text(widget.lable),
         suffixIcon: IconButton(
-          icon: showPassword
-              ? const Icon(Icons.visibility_outlined)
-              : const Icon(Icons.visibility_off_outlined),
+          icon: Icon(showPassword? Icons.visibility_outlined : Icons.visibility_off_outlined),
           tooltip: showPassword ? 'Hide password' : 'Show password',
           onPressed: () {
             setState(() {

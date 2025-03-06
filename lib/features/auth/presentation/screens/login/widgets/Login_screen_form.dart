@@ -4,6 +4,7 @@ import 'package:e_commerce/features/auth/presentation/bloc/login_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/screens/forget_password/forget/forget_password.dart';
 import 'package:e_commerce/features/auth/presentation/screens/signup/registeration/signup_screen.dart';
 import 'package:e_commerce/features/auth/widgets/password_text_field.dart';
+import 'package:e_commerce/features/shop/home/home_screen.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,10 @@ class _LoginScreenFormState extends State<LoginScreenForm> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text("Welcome ${state.user!.name}!")),
               );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
+              );
             } else if (state is AuthFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),
@@ -64,24 +69,6 @@ class _LoginScreenFormState extends State<LoginScreenForm> {
                 ),
                 PasswordTextField(
                     controller: passwordController, lable: TTexts.password),
-                // TextFormField(
-                //   controller: passwordController,
-                //   obscureText: !isPasswordVisible,
-                //   decoration: InputDecoration(
-                //       hintText: TTexts.password,
-                //       prefixIcon: const Icon(Icons.lock_outline),
-                //       suffixIcon: GestureDetector(
-                //         onTap: (){
-                //           setState(() {
-                //             isPasswordVisible = !isPasswordVisible;
-                //           });
-                //         },
-                //         child: Icon(
-                //           isPasswordVisible? Icons.visibility_outlined : Icons.visibility_off_outlined
-                //           )
-                //         )
-                //         ),
-                // ),
                 const SizedBox(
                   height: TSizes.sm,
                 ),
