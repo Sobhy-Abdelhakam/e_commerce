@@ -21,8 +21,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         label: Text(widget.lable),
         suffixIcon: IconButton(
           icon: showPassword
-              ? const Icon(Icons.remove_red_eye_outlined)
-              : const Icon(Icons.enhanced_encryption_outlined),
+              ? const Icon(Icons.visibility_outlined)
+              : const Icon(Icons.visibility_off_outlined),
           tooltip: showPassword ? 'Hide password' : 'Show password',
           onPressed: () {
             setState(() {
@@ -32,6 +32,12 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         ),
       ),
       obscureText: !showPassword,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter a valid email';
+        }
+        return null;
+      },
     );
   }
 }

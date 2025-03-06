@@ -1,16 +1,25 @@
+import 'package:e_commerce/core/helpers/app_regex.dart';
 import 'package:e_commerce/features/auth/presentation/bloc/auth_state.dart';
 import 'package:e_commerce/features/auth/presentation/bloc/login_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/screens/forget_password/forget/forget_password.dart';
 import 'package:e_commerce/features/auth/presentation/screens/signup/registeration/signup_screen.dart';
+import 'package:e_commerce/features/auth/widgets/password_text_field.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginScreenForm extends StatelessWidget {
-  LoginScreenForm({
+class LoginScreenForm extends StatefulWidget {
+  const LoginScreenForm({
     super.key,
   });
+
+  @override
+  State<LoginScreenForm> createState() => _LoginScreenFormState();
+}
+
+class _LoginScreenFormState extends State<LoginScreenForm> {
+  final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -19,6 +28,7 @@ class LoginScreenForm extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
       child: Form(
+        key: _formKey,
         child: BlocConsumer<LoginCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
@@ -40,17 +50,38 @@ class LoginScreenForm extends StatelessWidget {
                     hintText: TTexts.email,
                     prefixIcon: Icon(Icons.email_outlined),
                   ),
+                  validator: (value) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        !AppRegex.isEmailValid(value)) {
+                      return 'Please enter a valid email';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(
                   height: TSizes.spaceBtwInputFields,
                 ),
-                TextFormField(
-                  controller: passwordController,
-                  decoration: const InputDecoration(
-                      hintText: TTexts.password,
-                      prefixIcon: Icon(Icons.lock),
-                      suffixIcon: Icon(Icons.remove_red_eye_outlined)),
-                ),
+                PasswordTextField(
+                    controller: passwordController, lable: TTexts.password),
+                // TextFormField(
+                //   controller: passwordController,
+                //   obscureText: !isPasswordVisible,
+                //   decoration: InputDecoration(
+                //       hintText: TTexts.password,
+                //       prefixIcon: const Icon(Icons.lock_outline),
+                //       suffixIcon: GestureDetector(
+                //         onTap: (){
+                //           setState(() {
+                //             isPasswordVisible = !isPasswordVisible;
+                //           });
+                //         },
+                //         child: Icon(
+                //           isPasswordVisible? Icons.visibility_outlined : Icons.visibility_off_outlined
+                //           )
+                //         )
+                //         ),
+                // ),
                 const SizedBox(
                   height: TSizes.sm,
                 ),
@@ -85,10 +116,12 @@ class LoginScreenForm extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            context.read<LoginCubit>().signIn(
-                                emailController.text, passwordController.text);
-                            // authViewmodel.signIn(
-                            //     emailController.text, passwordController.text);
+                            if (_formKey.currentState!.validate()) {
+                              context.read<LoginCubit>().signIn(
+                                    emailController.text,
+                                    passwordController.text,
+                                  );
+                            }
                           },
                           child: const Text(TTexts.signIn),
                         ),
@@ -116,5 +149,12 @@ class LoginScreenForm extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 }
