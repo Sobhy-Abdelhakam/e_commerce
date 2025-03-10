@@ -1,8 +1,8 @@
 import 'package:e_commerce/common/widgets/grid_layout.dart';
 import 'package:e_commerce/common/widgets/product_card_vertical.dart';
 import 'package:e_commerce/common/widgets/section_header.dart';
+import 'package:e_commerce/core/routing/routes.dart';
 import 'package:e_commerce/domain/models/product.dart';
-import 'package:e_commerce/features/shop/product_details/product_details_screen.dart';
 import 'package:e_commerce/utils/constants/image_strings.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
@@ -71,15 +71,10 @@ class HomeScreenView extends StatelessWidget {
                           isFavorite: false,
                           brand: product.brand,
                           itemClick: () {
-                            Navigator.push(
+                            Navigator.pushNamed(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return ProductDetailsScreen(
-                                    product: product,
-                                  );
-                                },
-                              ),
+                              Routes.productDetails,
+                              arguments: product,
                             );
                           },
                         );

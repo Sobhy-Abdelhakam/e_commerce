@@ -1,5 +1,5 @@
+import 'package:e_commerce/core/routing/routes.dart';
 import 'package:e_commerce/domain/models/category.dart';
-import 'package:e_commerce/features/shop/products_by_category/products_by_category.dart';
 import 'package:e_commerce/utils/constants/sizes.dart';
 import 'package:e_commerce/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -47,9 +47,14 @@ class HomeCategoriesSection extends StatelessWidget {
                           itemImage: category.imageUrl!,
                           itemCategory: category.name,
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
-                              return ProductsByCategory(categoryId: category.id,);
-                            }));
+                            Navigator.pushNamed(
+                              context,
+                              Routes.productsByCategory,
+                              arguments: category.id,
+                            );
+                            // Navigator.push(context, MaterialPageRoute(builder: (context){
+                            //   return ProductsByCategory(categoryId: category.id,);
+                            // }));
                           },
                         );
                       });
